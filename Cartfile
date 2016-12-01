@@ -1,0 +1,8 @@
+github "Alamofire/Alamofire" ~> 4.0.0
+github "SwiftyJSON/SwiftyJSON"
+github "Flipboard/FLAnimatedImage"
+github "rs/SDWebImage" ~> 3.8.1
+github "jdg/MBProgressHUD" ~> 1.0.0
+github "kevin0571/STPopup"
+github "DavydLiu/DLRadioButton" ~> 1.4
+github "SnapKit/SnapKit" ~> 3.0.2
