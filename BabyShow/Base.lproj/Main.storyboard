@@ -576,16 +576,16 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cO6-r2-fte">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cO6-r2-fte">
                                 <rect key="frame" x="698" y="814" width="60" height="60"/>
-                                <state key="normal" image="BtnTxy"/>
+                                <state key="normal" image="BtnTxy2"/>
                                 <connections>
                                     <action selector="txyBtnAction:" destination="lOK-2B-W1E" eventType="touchUpInside" id="29h-33-EnC"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nYx-CT-sM8">
                                 <rect key="frame" x="698" y="879" width="60" height="60"/>
-                                <state key="normal" image="BtnPhoto"/>
+                                <state key="normal" image="BtnPhoto2"/>
                                 <connections>
                                     <action selector="photosBtnAction:" destination="lOK-2B-W1E" eventType="touchUpInside" id="fIT-9K-e2R"/>
                                 </connections>
@@ -596,7 +596,7 @@
                                     <constraint firstAttribute="width" constant="60" id="Cv8-xU-5z9"/>
                                     <constraint firstAttribute="width" secondItem="xPc-YK-0Wd" secondAttribute="height" multiplier="1:1" id="vPA-JW-E9m"/>
                                 </constraints>
-                                <state key="normal" image="BtnShare"/>
+                                <state key="normal" image="BtnShare2"/>
                                 <connections>
                                     <action selector="shareBtnAction:" destination="lOK-2B-W1E" eventType="touchUpInside" id="pqu-te-cVk"/>
                                 </connections>
@@ -759,9 +759,9 @@
     <resources>
         <image name="BackImage" width="1024" height="1366"/>
         <image name="BallIcon" width="64" height="64"/>
-        <image name="BtnPhoto" width="375" height="375"/>
-        <image name="BtnShare" width="375" height="375"/>
-        <image name="BtnTxy" width="375" height="375"/>
+        <image name="BtnPhoto2" width="200" height="200"/>
+        <image name="BtnShare2" width="200" height="200"/>
+        <image name="BtnTxy2" width="200" height="200"/>
         <image name="LaunchImage" width="1024" height="1366"/>
         <image name="LoginPwd" width="30" height="31"/>
         <image name="LogoIcon" width="400" height="200"/>

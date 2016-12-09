@@ -53,9 +53,7 @@ class PhotoBrowserViewController: SGPhotoBrowser {
     
     /// 获取图片ids
     func loadData() {
-        
-        let urlConnection = UrlConnection(action: "pabyApp_imageIds.action")
-        urlConnection.request(urlConnection.assembleUrl(), successCallBack: { value in
+        URLConnector.request(Router.imageIds, successCallBack: { value in
             if let data = value["data"].array {
 
                 let imageIDs = data.map{ item in item["id"].int! }

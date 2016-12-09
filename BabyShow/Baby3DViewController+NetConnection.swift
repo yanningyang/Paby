@@ -12,9 +12,7 @@ extension Baby3DViewController {
     
     /// 获取付费状态
     func getPaymentStatus() {
-        
-        let urlConnection = UrlConnection(action: "pabyApp_paymentStatus.action")
-        urlConnection.request(urlConnection.assembleUrl(), successCallBack: { value in
+        URLConnector.request(Router.paymentStatus, successCallBack: { value in
             if let status = value["data"]["status"].bool  {
                 
                 let userDefaults = UserDefaults.standard
@@ -30,8 +28,8 @@ extension Baby3DViewController {
     /// 获取3D数据就绪状态
     func getFaceDataReady() {
         
-        let urlConnection = UrlConnection(action: "pabyApp_faceDataReady.action")
-        urlConnection.request(urlConnection.assembleUrl(), successCallBack: { value in
+        self.isDownloading = true
+        URLConnector.request(Router.faceDataReady, successCallBack: { value in
             if let status = value["data"]["status"].bool  {
                 
                 let userDefaults = UserDefaults.standard
@@ -43,6 +41,7 @@ extension Baby3DViewController {
                 } else {
                     self.tipLabel.isHidden = false
                     self.tipLabel.text = "暂无数据"
+                    self.isDownloading = false
                 }
             }
         })
@@ -51,8 +50,8 @@ extension Baby3DViewController {
     /// 获取3D数据是否更新
     func getFaceDataRefresh() {
         
-        let urlConnection = UrlConnection(action: "pabyApp_faceDataRefresh.action")
-        urlConnection.request(urlConnection.assembleUrl(), successCallBack: { value in
+        self.isDownloading = true
+        URLConnector.request(Router.faceDataRefresh, successCallBack: { value in
             if let status = value["data"]["status"].bool  {
                 if status {
                     self.getFaceData()
@@ -79,8 +78,8 @@ extension Baby3DViewController {
     /// 获取3D数据
     func getFaceData() {
         
-        let urlConnection = UrlConnection(action: "pabyApp_faceData.action")
-        urlConnection.download(urlString: urlConnection.assembleUrl(), localFileName: localFaceDataPath, downloadComplete: { success, destinationURL in
+        self.isDownloading = true
+        URLConnector.download(Router.faceData, localFileName: localFaceDataPath, downloadComplete: { success, destinationURL in
             UITools.sharedInstance.toast(success ? "下载3D数据成功" : "下载3D数据失败")
             if success {
                 self.tipLabel.isHidden = true
@@ -92,7 +91,9 @@ extension Baby3DViewController {
                 
                 self.faceDataDownloadSuccess()
             } else {
-                
+                self.tipLabel.isHidden = false
+                self.tipLabel.text = "下载3D数据失败，点击屏幕重试"
+                self.isDownloading = false
             }
         }, downloadProgress: { progress in
             
@@ -102,8 +103,7 @@ extension Baby3DViewController {
     /// 确认3D数据下载成功
     func faceDataDownloadSuccess() {
         
-        let urlConnection = UrlConnection(action: "pabyApp_faceDataDownloadSuccess.action")
-        urlConnection.request(urlConnection.assembleUrl(), successCallBack: { value in
+        URLConnector.request(Router.faceDataDownloadSuccess, successCallBack: { value in
             if let error_code = value["error_code"].int {
                 if error_code == SYSTEM_ERROR {
                     
@@ -115,8 +115,7 @@ extension Baby3DViewController {
     /// 获取孕周
     func getGestationalWeeks() {
         
-        let urlConnection = UrlConnection(action: "pabyApp_getGestationalWeeks.action")
-        urlConnection.request(urlConnection.assembleUrl(), successCallBack: { value in
+        URLConnector.request(Router.getGestationalWeeks, successCallBack: { value in
             if let weeks = value["data"]["gestational_weeks"].int {
                 
                 self.numberOfWeeksLabel.text = "第 \(weeks) 周"

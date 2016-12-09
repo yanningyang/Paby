@@ -76,18 +76,14 @@ class Baby3DViewController: UIViewController, MWPhotoBrowserDelegate {
     /// 胎心音设备是否插入
     lazy var audioDeviceIsPlugged: Bool = { false }()
     
+    /// 是否正在下载3D数据
+    lazy var isDownloading: Bool = { true }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // 隐藏 NavigationBar
-        self.navigationController?.isNavigationBarHidden = true
-        
-//        txyBtn.isHidden = true
-        payBtn.isHidden = true
-        tipLabel.isHidden = true
-        
-        // set the sceneView background color to clear
-        babySCNView.backgroundColor = UIColor.clear
+
+        self.setupUI()
+
         // 切换背景
         timerCallback()
         // 播放背景音乐
@@ -99,16 +95,7 @@ class Baby3DViewController: UIViewController, MWPhotoBrowserDelegate {
         self.audioSettingInit()
         
         // 从本地磁盘加载3D数据
-        let documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
-        let fileURL = documentsURL.appendingPathComponent(localFaceDataPath)
-        let fileExists = FileManager.default.fileExists(atPath: fileURL.path)
-        print("🔥fileExists: \(fileExists)")
-        if fileExists {
-            // 设置3d场景
-            setupScene(from: fileURL)
-            // 设置摄像机
-            setupCamera()
-        }
+        self.load3DDataFromLocal()
         
         // 获取孕周
         self.getGestationalWeeks()
@@ -195,7 +182,9 @@ class Baby3DViewController: UIViewController, MWPhotoBrowserDelegate {
     // MARK: - Gesture handle
     func onTapBackgroundView(_ sender: UITapGestureRecognizer) {
         
-        self.getFaceDataReady()
+        if !isDownloading {
+            self.getFaceDataReady()
+        }
     }
     
     // MARK: - Image Browser
@@ -297,10 +286,13 @@ class Baby3DViewController: UIViewController, MWPhotoBrowserDelegate {
         // 切换背景
         if isBetween("08:00:00", toTime: "12:59:59") {
             setBgImage(0)
+            changeBtnImg(type: 2)
         } else if isBetween("13:00:00", toTime: "19:59:59") {
             setBgImage(1)
+            changeBtnImg(type: 2)
         } else {
             setBgImage(2)
+            changeBtnImg(type: 1)
         }
     }
     
@@ -355,5 +347,44 @@ class Baby3DViewController: UIViewController, MWPhotoBrowserDelegate {
 //            self.systemTimeLabel.textColor = UIColor.blackColor()
 //        }
     }
+    
+    func setupUI() {
+        
+        // 隐藏 NavigationBar
+        self.navigationController?.isNavigationBarHidden = true
+        
+        payBtn.isHidden = true
+        tipLabel.isHidden = true
+        
+        // set the sceneView background color to clear
+        babySCNView.backgroundColor = UIColor.clear
+        
+        let edgeInsets = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
+        self.txyBtn.imageEdgeInsets = edgeInsets
+        self.photosBtn.imageEdgeInsets = edgeInsets
+        self.shareBtn.imageEdgeInsets = edgeInsets
+    }
+    
+    
+    /// 改变按钮image
+    ///
+    /// - Parameter type: 1为夜间模式，2为白天模式
+    func changeBtnImg(type: Int) {
+        self.txyBtn.setImage(UIImage(named: "BtnTxy\(type)"), for: .normal)
+        self.photosBtn.setImage(UIImage(named: "BtnPhoto\(type)"), for: .normal)
+        self.shareBtn.setImage(UIImage(named: "BtnShare\(type)"), for: .normal)
+    }
 
+    func load3DDataFromLocal() {
+        let documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+        let fileURL = documentsURL.appendingPathComponent(localFaceDataPath)
+        let fileExists = FileManager.default.fileExists(atPath: fileURL.path)
+        print("🔥fileExists: \(fileExists)")
+        if fileExists {
+            // 设置3d场景
+            setupScene(from: fileURL)
+            // 设置摄像机
+            setupCamera()
+        }
+    }
 }

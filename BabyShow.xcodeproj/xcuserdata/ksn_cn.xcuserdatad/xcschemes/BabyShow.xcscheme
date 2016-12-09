@@ -112,8 +112,8 @@
       buildConfiguration = "Debug">
    </AnalyzeAction>
    <ArchiveAction
-      buildConfiguration = "ad-hoc"
-      customArchiveName = "Paby"
+      buildConfiguration = "Debug"
+      customArchiveName = "Migu"
       revealArchiveInOrganizer = "YES">
    </ArchiveAction>
 </Scheme>

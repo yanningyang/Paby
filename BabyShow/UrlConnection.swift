@@ -11,7 +11,6 @@ import Alamofire
 import MBProgressHUD
 import SwiftyJSON
 
-// 除登录接口之外
 open class UrlConnection {
     let host_path = HOST_PATH
     var action: String!

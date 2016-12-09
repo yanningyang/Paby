@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Alamofire
 
 class LoginViewController: UIViewController {
 
@@ -38,11 +39,12 @@ class LoginViewController: UIViewController {
     
     //MARK: - Gesture handle
     func onTapBackgroundView(_ sender: UITapGestureRecognizer) {
-        keyTextField.resignFirstResponder()
+        self.view.endEditing(true)
     }
     
     //MARK: - Actions
     @IBAction func loginBtnAction(_ sender: UIButton) {
+        self.view.endEditing(true)
 //        login()
         
         let userDefaults = UserDefaults.standard
@@ -67,9 +69,8 @@ class LoginViewController: UIViewController {
             return
         }
         
-        let urlConnection = UrlConnection(action: "pabyApp_login.action", addCommonParameter: false)
-        let parameters: [String : String] = ["key" : loginKey.md5]
-        urlConnection.request(urlConnection.assembleUrl(parameters), showLoadingAnimation: true, successCallBack: { value in
+        URLConnector.request(Router.login(key: loginKey), showLoadingAnimation: true,
+            successCallBack: { value in
             if let status = value["data"]["status"].bool {
                 if status {
                     
@@ -85,7 +86,7 @@ class LoginViewController: UIViewController {
                     window.makeKeyAndVisible()
                     
                     //上传token
-//                    Util.sharedInstance.updateDeviceToken()
+                    //                    Util.sharedInstance.updateDeviceToken()
                 } else {
                     let userDefaults = UserDefaults.standard
                     userDefaults.removeObject(forKey: "key")

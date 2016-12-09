@@ -62,8 +62,7 @@ class ProgressViewController: UIViewController {
 
     func getProgress() {
         
-        let urlConnection = UrlConnection(action: "pabyApp_getProgress.action")
-        urlConnection.request(urlConnection.assembleUrl(), successCallBack: { value in
+        URLConnector.request(Router.getProgress, successCallBack: { value in
             if let progress = value["data"]["progress"].int {
                 
                 let times = ["登记", "付费", "上传", "3D还原", "打印", "发货", "已完成"]

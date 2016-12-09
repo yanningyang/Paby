@@ -82,6 +82,7 @@
 		C93B10D31DCAC50D00BCDD9F /* FLAnimatedImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C93B10CF1DCAC50D00BCDD9F /* FLAnimatedImage.framework */; };
 		C93B10D41DCAC50D00BCDD9F /* MBProgressHUD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C93B10D01DCAC50D00BCDD9F /* MBProgressHUD.framework */; };
 		C93B10D51DCAC50E00BCDD9F /* WebImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C93B10D11DCAC50D00BCDD9F /* WebImage.framework */; };
+		C946220E1DFA951500C56C4C /* URLConnector.swift in Sources */ = {isa = PBXBuildFile; fileRef = C946220D1DFA951500C56C4C /* URLConnector.swift */; };
 		C94913FC1DCAFC4E000B8EDC /* MWPhotoBrowser.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C94913FB1DCAFC4E000B8EDC /* MWPhotoBrowser.bundle */; };
 		C94C13B91DCA328E00879002 /* HorizontalProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = C94C13B81DCA328E00879002 /* HorizontalProgressView.m */; };
 		C94C14271DCA395F00879002 /* DACircularProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = C94C14241DCA395F00879002 /* DACircularProgressView.m */; };
@@ -308,6 +309,7 @@
 		C93B10CF1DCAC50D00BCDD9F /* FLAnimatedImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FLAnimatedImage.framework; path = Carthage/Build/iOS/FLAnimatedImage.framework; sourceTree = "<group>"; };
 		C93B10D01DCAC50D00BCDD9F /* MBProgressHUD.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MBProgressHUD.framework; path = Carthage/Build/iOS/MBProgressHUD.framework; sourceTree = "<group>"; };
 		C93B10D11DCAC50D00BCDD9F /* WebImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebImage.framework; path = Carthage/Build/iOS/WebImage.framework; sourceTree = "<group>"; };
+		C946220D1DFA951500C56C4C /* URLConnector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLConnector.swift; sourceTree = "<group>"; };
 		C94913FB1DCAFC4E000B8EDC /* MWPhotoBrowser.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = MWPhotoBrowser.bundle; path = BabyShow/MWPhotoBrowser.bundle; sourceTree = SOURCE_ROOT; };
 		C94C13B71DCA328E00879002 /* HorizontalProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HorizontalProgressView.h; sourceTree = "<group>"; };
 		C94C13B81DCA328E00879002 /* HorizontalProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HorizontalProgressView.m; sourceTree = "<group>"; };
@@ -775,6 +777,7 @@
 				C9B5E31D1D653EB400075806 /* UITools.swift */,
 				C9E6193E1DCA03E50022AEEE /* Util.swift */,
 				C9E6193A1DCA01500022AEEE /* UrlConnection.swift */,
+				C946220D1DFA951500C56C4C /* URLConnector.swift */,
 			);
 			name = Util;
 			sourceTree = "<group>";
@@ -976,6 +979,7 @@
 						CreatedOnToolsVersion = 7.3;
 						DevelopmentTeam = SA3PMJF59D;
 						LastSwiftMigration = 0800;
+						ProvisioningStyle = Automatic;
 					};
 					C9E5993D1CF2F8AD00B5C19D = {
 						CreatedOnToolsVersion = 7.3;
@@ -1122,6 +1126,7 @@
 				C94C13B91DCA328E00879002 /* HorizontalProgressView.m in Sources */,
 				C98F39C71D581C1600F8CE66 /* UIColor+Hex.swift in Sources */,
 				C92198031D379BE00051E856 /* EZAudio.m in Sources */,
+				C946220E1DFA951500C56C4C /* URLConnector.swift in Sources */,
 				C9BAE0711DCA40580086E5C1 /* MWTapDetectingImageView.m in Sources */,
 				C9BAE0701DCA40580086E5C1 /* MWPhotoBrowser.m in Sources */,
 				C9073C771DDE9A3700E4A172 /* SGPhotoBrowser.m in Sources */,
@@ -1285,7 +1290,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = SA3PMJF59D;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/BabyShow/ShareSDK",
@@ -1437,6 +1443,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = SA3PMJF59D;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/BabyShow/ShareSDK",
@@ -1456,6 +1463,8 @@
 				OTHER_SWIFT_FLAGS = "-DDEBUG";
 				PRODUCT_BUNDLE_IDENTIFIER = cn.edu.cqu.BabyShow;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "BabyShow/BabyShow-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
@@ -1470,7 +1479,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = SA3PMJF59D;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/BabyShow/ShareSDK",

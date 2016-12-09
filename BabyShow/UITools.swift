@@ -32,7 +32,7 @@ open class UITools {
         let toast = MBProgressHUD.showAdded(to: UIApplication.shared.keyWindow!, animated: true)
         toast.mode = MBProgressHUDMode.text
         toast.isUserInteractionEnabled = false
-        toast.offset = CGPoint(x: 0.0, y: UIScreen.main.bounds.height/2 - 100)
+//        toast.offset = CGPoint(x: 0.0, y: UIScreen.main.bounds.height/2 - 100)
         toast.label.text = labelText
         toast.label.textColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.90)
         toast.margin = 10.0
