@@ -214,6 +214,14 @@ extension Baby3DViewController {
             return
         }
         
+        // add a point light
+        let lightNode = SCNNode()
+        lightNode.light = SCNLight()
+        lightNode.light?.type = SCNLight.LightType.omni
+        lightNode.light?.color = UIColor(white: 0.75, alpha: 1.0)
+        lightNode.position = SCNVector3Make(0, -100, 100)
+        babyScene.rootNode.addChildNode(lightNode)
+        
         let material = SCNMaterial()
         material.locksAmbientWithDiffuse = true
         let diffuse = "BabyFaceTexture"

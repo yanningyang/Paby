@@ -143,6 +143,8 @@
 		C9E6193D1DCA018B0022AEEE /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E6193C1DCA018B0022AEEE /* Constant.swift */; };
 		C9E6193F1DCA03E50022AEEE /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E6193E1DCA03E50022AEEE /* Util.swift */; };
 		C9F034141DD4150F00C21B42 /* Baby3DViewController+NetConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F034131DD4150F00C21B42 /* Baby3DViewController+NetConnection.swift */; };
+		C9F5BE211E052E0D0084EC0A /* tomcat.cer in Resources */ = {isa = PBXBuildFile; fileRef = C9F5BE1E1E052D6F0084EC0A /* tomcat.cer */; };
+		C9F5BE221E052E0D0084EC0A /* client.p12 in Resources */ = {isa = PBXBuildFile; fileRef = C9F5BE1F1E052D6F0084EC0A /* client.p12 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -392,6 +394,8 @@
 		C9E6193C1DCA018B0022AEEE /* Constant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		C9E6193E1DCA03E50022AEEE /* Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
 		C9F034131DD4150F00C21B42 /* Baby3DViewController+NetConnection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Baby3DViewController+NetConnection.swift"; sourceTree = "<group>"; };
+		C9F5BE1E1E052D6F0084EC0A /* tomcat.cer */ = {isa = PBXFileReference; lastKnownFileType = file; path = tomcat.cer; sourceTree = "<group>"; };
+		C9F5BE1F1E052D6F0084EC0A /* client.p12 */ = {isa = PBXFileReference; lastKnownFileType = file; path = client.p12; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -745,6 +749,7 @@
 		C96AD6E41DCB0E9000B41EBD /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				C9F5BE201E052DE80084EC0A /* SSL */,
 				C98AB1CB1DE5B68700D57693 /* babyImages */,
 				C98455931DD16350004E18BC /* afternoon.gif */,
 				C98455941DD16350004E18BC /* bgm.mp3 */,
@@ -908,6 +913,15 @@
 			path = BabyShowUITests;
 			sourceTree = "<group>";
 		};
+		C9F5BE201E052DE80084EC0A /* SSL */ = {
+			isa = PBXGroup;
+			children = (
+				C9F5BE1E1E052D6F0084EC0A /* tomcat.cer */,
+				C9F5BE1F1E052D6F0084EC0A /* client.p12 */,
+			);
+			name = SSL;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1018,6 +1032,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C9F5BE211E052E0D0084EC0A /* tomcat.cer in Resources */,
+				C9F5BE221E052E0D0084EC0A /* client.p12 in Resources */,
 				C9C768511D49940B00561682 /* art.scnassets in Resources */,
 				C92198121D379BE00051E856 /* Info.plist in Resources */,
 				C98455971DD16350004E18BC /* afternoon.gif in Resources */,

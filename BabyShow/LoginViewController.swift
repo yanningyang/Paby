@@ -45,18 +45,18 @@ class LoginViewController: UIViewController {
     //MARK: - Actions
     @IBAction func loginBtnAction(_ sender: UIButton) {
         self.view.endEditing(true)
-//        login()
+        login()
         
-        let userDefaults = UserDefaults.standard
-        userDefaults.set("Y8e4Ea2u".md5, forKey: USER_DEFAULTS_KEY_LOGIN_KEY)
-        userDefaults.set(true, forKey: USER_DEFAULTS_KEY_IS_LOGIN)
-        userDefaults.synchronize()
-        
-        let window = UIApplication.shared.keyWindow!
-        var viewController: UIViewController!
-        viewController = self.storyboard!.instantiateViewController(withIdentifier: "HomeViewController") as? HomeViewController
-        window.rootViewController = viewController
-        window.makeKeyAndVisible()
+//        let userDefaults = UserDefaults.standard
+//        userDefaults.set("Y8e4Ea2u".md5, forKey: USER_DEFAULTS_KEY_LOGIN_KEY)
+//        userDefaults.set(true, forKey: USER_DEFAULTS_KEY_IS_LOGIN)
+//        userDefaults.synchronize()
+//        
+//        let window = UIApplication.shared.keyWindow!
+//        var viewController: UIViewController!
+//        viewController = self.storyboard!.instantiateViewController(withIdentifier: "HomeViewController") as? HomeViewController
+//        window.rootViewController = viewController
+//        window.makeKeyAndVisible()
     }
     
     /// MARK: - network request
@@ -69,7 +69,7 @@ class LoginViewController: UIViewController {
             return
         }
         
-        URLConnector.request(Router.login(key: loginKey), showLoadingAnimation: true,
+        URLConnector.request(Router.login(key: loginKey.md5), showLoadingAnimation: true,
             successCallBack: { value in
             if let status = value["data"]["status"].bool {
                 if status {

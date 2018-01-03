@@ -14,13 +14,14 @@ public let APP_ID = ""
 /// MARK -- 接口地址
 #if DEBUG
     // 开发环境
-    public let HOST_NAME = "http://101.201.31.147"
+    public let HOST_NAME = "http://139.224.80.248"
 #else
     // 生产环境
     public let HOST_NAME = "http://oa.yuqinqiche.com"
 #endif
 
-public let HOST_PATH = HOST_NAME + "/dppepper/app"
+public let HOST_PATH = HOST_NAME + "/Dppepper/app"
+//public let HOST_PATH = HOST_NAME + "/dppepper/app"
 
 // 检查版本地址
 public let CheckUpdateUrl = HOST_NAME + "/apk/DriverAPPUpdate.xml"
